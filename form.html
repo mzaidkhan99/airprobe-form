@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <!-- /* <style>
+    </style> */ -->
+</head>
+<body>
+    <div class="container">
+        <div class="left">
+            <form>
+                <div class="form-group">
+                    <label for="name">input 1</label>
+                    <input id="inp1" class="form-control" type="text">
+                </div>
+                <div class="form-group">
+                    <label for="email">input 2</label>
+                    <input id="inp2" class="form-control" type="text">
+                </div>
+                <!-- <div class="form-group">
+                    <label for="email">input 3</label>
+                    <input class="form-control" type="text" placeholder="site type">
+                </div> -->
+                <!-- <div class="form-group">
+                    <label for="email">input 4</label>
+                    <input class="form-control" type="text">
+                </div> -->
+            </form>
+            <button type="submit" onclick="btn()" class="btn btn-primary">Submit</button>
+        </div>
+        <div class="right">
+            <h3>Response</h3>
+            <div id="res">
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+function btn() {
+    var inp1 = document.getElementById("inp1").value;
+    var inp2 = document.getElementById("inp2").value;
+    var data={
+        "name":inp1,
+        "salary":inp2,
+        "age":"200"
+    }
+    console.log("data--",data);
+    var req = new XMLHttpRequest();
+    req.onload = function() {
+        if (this.status == 200) {
+            console.log(this.responseText);
+            document.getElementById("res").innerHTML = this.responseText;
+        } else{
+            console.log("error--");
+            document.getElementById("res").innerHTML = 'error';
+        }
+    };
+    req.open("POST", "http://dummy.restapiexample.com/api/v1/create");
+    req.getResponseHeader("Content-type", "application/json");
+    req.send(data);
+}
+
+</script>

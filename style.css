@@ -1,0 +1,18 @@
+
+.container{
+    padding-top: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.left{
+    padding-right: 5px;
+    width: 50%;
+}
+.right{
+    padding-left: 5px;
+    width: 50%;
+}
+.right > h3{
+    text-align: center;
+}
